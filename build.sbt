@@ -7,7 +7,6 @@ val commonSettings = Seq(
   addCompilerPlugin("org.typelevel" %% "kind-projector"     % "0.11.1" cross CrossVersion.full),
   addCompilerPlugin("com.olegpy"    %% "better-monadic-for" % "0.3.1"),
   organization := "io.github.dimitarg",
-  version := "0.0.1-SNAPSHOT",
   resolvers ++= Seq(
     Resolver.jcenterRepo,
     Resolver.bintrayRepo("dimitarg", "maven")
