@@ -3,6 +3,7 @@ val scalaVer = "2.13.4"
 val commonSettings = Seq(
   ThisBuild / scalaVersion := scalaVer,
   ThisBuild / crossScalaVersions := Seq(scalaVer),
+  ThisBuild / licenses += ("Apache-2.0", url("https://opensource.org/licenses/Apache-2.0")),
   addCompilerPlugin("org.typelevel" %% "kind-projector"     % "0.11.1" cross CrossVersion.full),
   addCompilerPlugin("com.olegpy"    %% "better-monadic-for" % "0.3.1"),
   organization := "io.github.dimitarg",
@@ -38,7 +39,6 @@ lazy val root = (project in file("."))
   .settings(
     name := "bb-webhook-root",
   )
-  .settings(licenses += ("Apache-2.0", url("https://opensource.org/licenses/Apache-2.0")))
   .settings(commonSettings)
   .settings(skip in publish := true)
   .settings(ghWorkflowSettings)
