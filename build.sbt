@@ -12,7 +12,8 @@ val commonSettings = Seq(
     Resolver.bintrayRepo("dimitarg", "maven")
   ),
   testFrameworks += new TestFramework("weaver.framework.TestFramework"),
-  Test / fork := true
+  Test / fork := true,
+  test in assembly := {}
 )
 
 val ghWorkflowSettings = Seq(
@@ -28,6 +29,26 @@ val ghWorkflowSettings = Seq(
   )),
   ThisBuild / githubWorkflowPublish := Seq(WorkflowStep.Sbt(List("release with-defaults")))
 )
+
+val assemblySettings = Seq(
+  assemblyMergeStrategy in assembly := {
+    case PathList("META-INF", file)
+      if file == "MANIFEST.MF" =>
+        MergeStrategy.discard
+    case PathList(ps @ _*)
+      if  ps.last == "NOTICE" || ps.last == "LICENSE" =>
+    //   || ps.last.endsWith("reactor.blockhound.integration.BlockHoundIntegration")
+    //   || ps.last.endsWith("INDEX.LIST")  =>
+        MergeStrategy.discard
+    // case PathList(ps @ _*)
+    //   if ps.last.endsWith("io.netty.versions.properties") =>
+    //    MergeStrategy.filterDistinctLines
+    case _ => MergeStrategy.singleOrError
+  },
+  artifact in (Compile, assembly) ~= { art =>
+      art.withClassifier(`classifier` = Some("assembly"))
+  } 
+) ++ addArtifact(artifact in (Compile, assembly), assembly).settings
 
 val deps = Seq(
   "org.http4s"          %% "http4s-ember-server"           % "0.21.14",
@@ -48,6 +69,7 @@ lazy val server = (project in file("modules/server"))
     name := "bb-webhook"
   )
   .settings(commonSettings)
+  .settings(assemblySettings)
   .settings(libraryDependencies ++= deps)
 
 lazy val integrationTests = (project in file("modules/integrationTests"))
