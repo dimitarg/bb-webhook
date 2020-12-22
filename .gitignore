@@ -1,0 +1,10 @@
+target
+*~
+*.bak
+*.orig
+*.rej
+.idea
+**/.bloop
+**/.metals
+**/.vscode
+**/metals.sbt
