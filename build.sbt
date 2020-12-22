@@ -16,6 +16,7 @@ val commonSettings = Seq(
 
 val ghWorkflowSettings = Seq(
   ThisBuild / githubWorkflowScalaVersions := Seq(scalaVer),
+  ThisBuild /githubWorkflowScalaVersions in ThisBuild := Seq(scalaVer),
   ThisBuild / githubWorkflowBuild := Seq(WorkflowStep.Sbt(List("coverage", "test", "coverageReport"))),
   ThisBuild / githubWorkflowEnv += "BINTRAY_USER" -> "${{ secrets.BINTRAY_USER }}",
   ThisBuild / githubWorkflowEnv += "BINTRAY_PASS" -> "${{ secrets.BINTRAY_PASS }}",
