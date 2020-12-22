@@ -1,3 +1,8 @@
+ [ ![Download](https://api.bintray.com/packages/dimitarg/maven/bb-webhook/images/download.svg) ](https://bintray.com/dimitarg/maven/bb-webhook/_latestVersion)
+[![codecov](https://codecov.io/gh/dimitarg/bb-webhook/branch/master/graph/badge.svg?token=YV7y6sXisz)](https://codecov.io/gh/dimitarg/bb-webhook)
+ ![Build status](https://github.com/dimitarg/bb-webhook/workflows/Continuous%20Integration/badge.svg?branch=master)
+
+
 # bb-webhook
 
 Under construction.
@@ -7,8 +12,21 @@ sanitised event payload as input.
 
 # Installation
 
-TODO.
+## Manual
 
+1. Determine the latest version of the service by using the version badge at the top of this readme
+
+2. Dowload the service using the following command, replacing `<ver>` with the latest version:
+
+```
+curl --location https://dl.bintray.com/dimitarg/maven/io/github/dimitarg/bb-webhook_2.13/<ver>/bb-webhook_2.13-<ver>-assembly.jar --output bb-webhook.jar
+```
+
+3. Run the server
+
+```
+java -jar bb-webhook.jar
+```
 
 # Design
 

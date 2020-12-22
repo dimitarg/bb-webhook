@@ -37,12 +37,7 @@ val assemblySettings = Seq(
         MergeStrategy.discard
     case PathList(ps @ _*)
       if  ps.last == "NOTICE" || ps.last == "LICENSE" =>
-    //   || ps.last.endsWith("reactor.blockhound.integration.BlockHoundIntegration")
-    //   || ps.last.endsWith("INDEX.LIST")  =>
         MergeStrategy.discard
-    // case PathList(ps @ _*)
-    //   if ps.last.endsWith("io.netty.versions.properties") =>
-    //    MergeStrategy.filterDistinctLines
     case _ => MergeStrategy.singleOrError
   },
   artifact in (Compile, assembly) ~= { art =>
