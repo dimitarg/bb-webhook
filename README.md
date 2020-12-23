@@ -32,10 +32,9 @@ java -jar bb-webhook.jar
 
 ## Goals
 
-- Minimal: The code only spins up a http port to listen to + parse bitbucket webhook events, and pipe them
+- Minimal: The code only spins up a http port to listen to + parse bitbucket webhook events, and sends those events
 to an os command.
-- Auditable: The non-test code in this repo is small enought that it is feasible to audit it, if you can read
-functional Scala
+- Auditable: The non-test code in this repo is small enough that it is feasible to audit it, provided you are able to read functional Scala
 
 ## Non-goals
 

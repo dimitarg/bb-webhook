@@ -3,16 +3,18 @@ package bb.webhook.it
 import weaver.pure._
 import cats.effect.IO
 import fs2.Stream
-import bb.webhook.Main
-import cats.effect.ExitCode
+import bb.webhook.AppSpec
+import bb.webhook.hmac._
+import bb.webhook.testutil._
+import cats.effect.Resource
 
-object AllTests extends Suite {
+object AllTests extends RSuite {
 
-  override def suitesStream: fs2.Stream[IO,RTest[Unit]] = Stream(
-    test("the application can start") {
-      Main.run(List()).map { result =>
-        expect(result == ExitCode.Success)
-      }
-    }
-  )
+  override type R = TestResources
+
+  override val sharedResource: Resource[IO, TestResources] = mkTestResources
+
+  override def suitesStream: Stream[IO,RTest[TestResources]] = 
+    AppSpec.tests.using[TestResources](_ => ()) ++
+    SignatureVerifierSpec.tests
 }
