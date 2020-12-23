@@ -47,7 +47,7 @@ val assemblySettings = Seq(
 
 val deps = Seq(
   "org.http4s"          %% "http4s-ember-server"           % "0.21.14",
-  "io.github.dimitarg"  %% "weaver-test-extra"             % "0.3.9"      % "test"
+  "io.github.dimitarg"  %% "weaver-test-extra"             % "0.4.0"      % "test"
 )
 
 lazy val root = (project in file("."))
