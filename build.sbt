@@ -1,4 +1,4 @@
-val scalaVer = "2.13.4"
+val scalaVer = "2.13.6"
 
 val commonSettings = Seq(
   ThisBuild / scalaVersion := scalaVer,
