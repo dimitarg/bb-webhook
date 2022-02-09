@@ -46,7 +46,7 @@ val assemblySettings = Seq(
 ) ++ addArtifact(artifact in (Compile, assembly), assembly).settings
 
 val deps = Seq(
-  "org.http4s"          %% "http4s-ember-server"           % "0.21.14",
+  "org.http4s"          %% "http4s-ember-server"           % "0.21.32",
   "io.github.dimitarg"  %% "weaver-test-extra"             % "0.3.9"      % "test"
 )
 
